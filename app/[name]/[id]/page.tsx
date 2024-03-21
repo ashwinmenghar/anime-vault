@@ -2,7 +2,6 @@ import { fetchAnimeById } from "@/app/action";
 import Image from "next/image";
 import Link from "next/link";
 
-
 async function Anime({ params }: any) {
   const { id } = params;
   const anime = await fetchAnimeById(id);
@@ -55,11 +54,10 @@ async function Anime({ params }: any) {
       <div className="grid grid-cols-3 gap-10 p-12">
         {anime.videos.map((video: any, index: number) => (
           <iframe
-            // width="500"
-            // height="315"
             src={video.player_url}
             allowFullScreen
             style={{ height: "315px", width: "400px" }}
+            key={index}
           ></iframe>
         ))}
       </div>
@@ -71,6 +69,7 @@ async function Anime({ params }: any) {
             alt="img"
             width={1000}
             height={1000}
+            key={index}
           ></Image>
         ))}
       </div>
